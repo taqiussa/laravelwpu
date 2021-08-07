@@ -5,10 +5,12 @@
 
         <article class="mb-5">
             <h2>
-                    {{ $post['title'] }}
+                    {{ $post->title }}
             </h2>
-            <h5>By : {{ $post['author'] }}</h5>
-            <p>{{ $post['body'] }}</p>
+            <h5>By : {{ $post->author }} in <a href="/categories/{{ $post->category->slug }}">{{ $post->category->name }}</a></h5>
+            {{-- {{  }} digunakan untuk menghindari html special characters --}}
+            {{-- {!!  !!} digunakan untuk memasukkan html special characters --}}
+            {!! $post->body !!}
         </article>
         <a href="/posts">
             Back
