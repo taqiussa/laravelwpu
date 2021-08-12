@@ -7,12 +7,12 @@
             <h2>
                     {{ $post->title }}
             </h2>
-            <h5>By : {{ $post->author }} in <a href="/categories/{{ $post->category->slug }}">{{ $post->category->name }}</a></h5>
+            <p>By : <a href="/authors/{{ $post->author->username }}" class="text-decoration-none"> {{ $post->user->name }} </a> in <a href="/categories/{{ $post->category->slug }}" class="text-decoration-none">{{ $post->category->name }}</a></p>
             {{-- {{  }} digunakan untuk menghindari html special characters --}}
             {{-- {!!  !!} digunakan untuk memasukkan html special characters --}}
             {!! $post->body !!}
         </article>
-        <a href="/posts">
+        <a href="/posts" class="text-decoration-none">
             Back
         </a>
 @endsection
