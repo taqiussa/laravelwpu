@@ -4,7 +4,7 @@
 {{-- apapun yang ada di dalam section ini , akan di proses kedalam yield container di main.blade.php --}}
 <h1 class="mb-3 text-center">{{ $title }}</h1>
 
-<div class="row justify-content-center mb-3">
+<div class="mb-3 row justify-content-center">
     <div class="col-md-6">
         <form action="/posts" method="GET">
             @if (request('category'))
@@ -13,7 +13,7 @@
             @if (request('author'))
             <input type="hidden" name="author" value="{{ request('author') }}">
             @endif
-            <div class="input-group mb-3">
+            <div class="mb-3 input-group">
                 <input type="text" class="form-control" placeholder="Search" name="search" value="{{ request('search') }}">
                 <button class="btn btn-danger" type="submit">Search</button>
             </div>
@@ -62,4 +62,8 @@
         @else
         <p class="text-center fs-4">No Post Found.</p>
     @endif
+
+    <div class="d-flex justify-content-end">
+        {{ $posts->links() }}
+    </div>
 @endsection

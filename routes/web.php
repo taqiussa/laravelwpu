@@ -1,10 +1,10 @@
 <?php
 
+use App\Http\Controllers\LoginController;
 use App\Http\Controllers\PostController;
+use App\Http\Controllers\RegisterController;
 use App\Models\Category;
 use Illuminate\Support\Facades\Route;
-use App\Models\Post;
-use App\Models\User;
 
 /*
 |--------------------------------------------------------------------------
@@ -46,19 +46,22 @@ Route::get('/categories', function () {
     ]);
 });
 
-Route::get('/categories/{category:slug}', function (Category $category) {
-    return view('posts',[
-        'title' => "Post by Category : $category->name",
-        'active' => 'categories',
-        'posts' => $category->posts->load('category','author','user'),
-    ]);
-});
+Route::get('/login', [LoginController::class,'index']);
+Route::get('/register', [RegisterController::class,'index']);
 
-Route::get('/authors/{author:username}', function(User $author){
-    return view('posts',[
-        'title' => "Post By Author : $author->name",
-        // lazy eager loading, mempercepat retrieve data dari parent model
-        'posts' => $author->posts->load('category','author','user'),
-        'active' => 'posts',
-    ]);
-});
+// Route::get('/categories/{category:slug}', function (Category $category) {
+//     return view('posts',[
+//         'title' => "Post by Category : $category->name",
+//         'active' => 'categories',
+//         'posts' => $category->posts->load('category','author','user'),
+//     ]);
+// });
+
+// Route::get('/authors/{author:username}', function(User $author){
+//     return view('posts',[
+//         'title' => "Post By Author : $author->name",
+//         // lazy eager loading, mempercepat retrieve data dari parent model
+//         'posts' => $author->posts->load('category','author','user'),
+//         'active' => 'posts',
+//     ]);
+// });
